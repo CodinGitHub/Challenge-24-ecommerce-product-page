@@ -1,0 +1,42 @@
+@use 'variables';
+
+.details{
+    border: 1px solid red;
+    padding-top: 60px;
+    &__company{
+        color: variables.$Orange;
+        text-transform: uppercase;
+        font-size: 0.8em;
+        letter-spacing: 1px;
+        margin-bottom: 24px;
+    }
+    &__title{
+        font-size: 2.8em;
+        margin-bottom: 48px;
+    }
+    &__description{
+        font-size: 1.05em;
+        color: variables.$Dark-grayish-blue;
+        margin-bottom: 37px;
+    }
+    &__now{
+        font-size: 2em;
+        font-weight: 700;
+        display: flex;
+        gap: 18px;
+        align-items: center;
+        margin-bottom: 12px;
+    }
+    &__discount{
+        font-size: 0.5em;
+        background-color: variables.$Pale-orange;
+        color: variables.$Orange;
+        padding: 4px;
+        border-radius: 4px;
+    }
+    &__before{
+        font-weight: 700;
+        color: variables.$Dark-grayish-blue;
+        text-decoration: line-through;
+    }
+}

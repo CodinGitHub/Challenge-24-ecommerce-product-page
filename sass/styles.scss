@@ -1,0 +1,22 @@
+@use 'variables';
+@use 'initial';
+@use 'navbar';
+@use 'header';
+@use 'gallery';
+@use 'details';
+
+.main-container{
+    margin: auto;
+    border: 1px solid black;
+    width: 375px;
+    @media (min-width: 1115px){
+        width: 1115px;
+    }
+}
+.content{
+    @media (min-width:1115px){
+        display: flex;
+        padding: 90px 50px;
+        gap: 124px;
+    }
+}

@@ -1,0 +1,48 @@
+@use 'variables';
+
+.header{
+    // border: 1px solid red;
+    
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 24px;
+    height: 68px;
+    @media (min-width: 1115px){
+        padding: 0;
+        height: 112px;
+        border-bottom: 1px solid variables.$Grayish-blue;
+    }
+    &__navigation{
+        width: 175px;
+        // border: 1px solid black;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        @media (min-width: 1115px){
+            width: 590px;
+        }
+    }
+    &__menu{
+        @media (min-width: 1115px){
+            display: none;
+        }
+    }
+    &__cart-avatar{
+        // border: 1px solid black;
+        width: 70px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        @media (min-width: 1115px){
+            width: 125px;
+        }
+    }
+    &__avatar{
+        width: 24px;
+        @media (min-width: 1115px){
+            width: 48px;
+        }
+    }
+
+}

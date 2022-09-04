@@ -13,32 +13,94 @@
     .attribution { font-size: 11px; text-align: center; }
     .attribution a { color: hsl(228, 45%, 44%); }
   </style>
+  <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
 
-  Collections
-  Men
-  Women
-  About
-  Contact
+  <main class="main-container">
+    <header class="header">
+    
+      <div class="header__navigation">
+        <img class="header__menu" src="../images/icon-menu.svg" alt="">
+        <img class="header__logo" src="../images/logo.svg" alt="">
 
-  Sneaker Company
+        <nav class="navbar">
+          <ul class="navbar__items">
+            <li><a class="navbar__link" href="#">Collections</a></li>
+            <li><a class="navbar__link" href="#">Men</a></li>
+            <li><a class="navbar__link" href="#">Women</a></li>
+            <li><a class="navbar__link" href="#">About</a></li>
+            <li><a class="navbar__link" href="#">Contact</a></li>
+          </ul>
+        </nav>
 
-  Fall Limited Edition Sneakers
+        <!-- inicio navbar modal -->
+        <!-- <div class="modal-nav">
+          <nav class="modal-nav__navbar">
+            <img class="navbar__close-icon" src="./images/icon-close.svg" alt="">
+            <ul>
+              <li><a class="navbar__link" href="#">Collections</a></li>
+              <li><a class="navbar__link" href="#">Men</a></li>
+              <li><a class="navbar__link" href="#">Women</a></li>
+              <li><a class="navbar__link" href="#">About</a></li>
+              <li><a class="navbar__link" href="#">Contact</a></li>
+            </ul>
+          </nav>
+        </div> -->
+        <!-- final navbar modal -->
+      </div>
+      <div class="header__cart-avatar">
+        <img class="header__cart" src="../images/icon-cart.svg" alt="">
+        <img class="header__avatar" src="../images/image-avatar.png" alt="">
+      </div>
+    </header>
 
-  These low-profile sneakers are your perfect casual wear companion. Featuring a 
-  durable rubber outer sole, they’ll withstand everything the weather can offer.
+    <section class="content">
+      <article class="gallery">
+        <div class="gallery__image-container">
+          <img class="gallery__big-image" id="big-image" src="../images/image-product-1.jpg" alt="image">
+        </div>
+        <div class="gallery__thumnails">
+          <img id="1" class="gallery__thumnail" src="../images/image-product-1-thumbnail.jpg" alt="">
+          <img id="2" class="gallery__thumnail" src="../images/image-product-2-thumbnail.jpg" alt="">
+          <img id="3" class="gallery__thumnail" src="../images/image-product-3-thumbnail.jpg" alt="">
+          <img id="4" class="gallery__thumnail" src="../images/image-product-4-thumbnail.jpg" alt="">
+        </div>
+        <!-- inicio gallery modal -->
+        <!-- <article class="gallery">
+          <div class="gallery__main">
+            <img class="gallery__previus" src="../images/icon-previous.svg" alt="">
+            <img id="big-image" class="gallery__big-image" src="../images/image-product-1.jpg" alt="image">
+            <img class="gallery__next" src="../images/icon-next.svg" alt="">
+          </div>
+          <div class="">
+            <img id="1" class="" src="../images/image-product-1-thumbnail.jpg" alt="">
+            <img id="2" class="" src="../images/image-product-2-thumbnail.jpg" alt="">
+            <img id="3" class="" src="../images/image-product-3-thumbnail.jpg" alt="">
+            <img id="4" class="" src="../images/image-product-4-thumbnail.jpg" alt="">
+          </div> -->
+        <!-- final gallery modal -->
+      </article>
+      
+      <article class="details">
+        <h2 class="details__company">Sneaker Company</h2>
+        <h2 class="details__title">Fall Limited Edition Sneakers</h2>
+        <p class="details__description">These low-profile sneakers are your perfect casual wear companion. Featuring a durable rubber outer sole, they’ll withstand everything the weather can offer.</p>
+        <p class="details__now">$125.00 <span class="details__discount">50%</span></p>
+        <p class="details__before">$250.00</p>
+        <input type="number" name="0" id="">
+        <button class="details__button">Add to cart</button>
+      </article>
+    </section>
+    
+  </main>
 
-  $125.00
-  50%
-  $250.00
-
-  0
-  Add to cart
   
-  <div class="attribution">
+  
+  <footer class="attribution">
     Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
     Coded by <a href="#">Your Name Here</a>.
-  </div>
+  </footer>
+  <script src="./main.js"></script>
 </body>
 </html>

@@ -1,0 +1,38 @@
+@use 'variables';
+
+.gallery{
+    width: 375px;
+    // border: 1px solid red;
+    @media (min-width: 1115px){
+        
+        // border: 2px solid blue;
+        width: 446px;
+    }
+    &__image-container{
+        width: 100%;
+    }
+    &__big-image{
+        width: 100%;
+        border-radius: 16px;
+        margin-bottom: 30px;
+    }
+    &__thumnails{
+        display: none;
+        @media (min-width: 1115px){
+            width: 100%;
+            // border: 3px solid black;
+            display: flex;
+            width: 446px;
+            justify-content: space-between;
+        }
+    }
+    &__thumnail{
+        width: 90px;
+        height: 90px;
+        border-radius: 16px;
+        &:hover{
+            opacity: 0.50;
+            border: 2px solid variables.$Orange;
+        }
+    }
+}

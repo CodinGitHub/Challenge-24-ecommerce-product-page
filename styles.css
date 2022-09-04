@@ -1,0 +1,177 @@
+@import url("https://fonts.googleapis.com/css2?family=Kumbh+Sans&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Kumbh Sans", sans-serif;
+}
+
+.navbar {
+  display: none;
+}
+@media (min-width: 1115px) {
+  .navbar {
+    display: block;
+    width: 400px;
+  }
+}
+.navbar__items {
+  display: flex;
+  list-style: none;
+  justify-content: space-between;
+}
+.navbar__link {
+  text-decoration: none;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 24px;
+  height: 68px;
+}
+@media (min-width: 1115px) {
+  .header {
+    padding: 0;
+    height: 112px;
+    border-bottom: 1px solid hsl(220deg, 14%, 75%);
+  }
+}
+.header__navigation {
+  width: 175px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+@media (min-width: 1115px) {
+  .header__navigation {
+    width: 590px;
+  }
+}
+@media (min-width: 1115px) {
+  .header__menu {
+    display: none;
+  }
+}
+.header__cart-avatar {
+  width: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+@media (min-width: 1115px) {
+  .header__cart-avatar {
+    width: 125px;
+  }
+}
+.header__avatar {
+  width: 24px;
+}
+@media (min-width: 1115px) {
+  .header__avatar {
+    width: 48px;
+  }
+}
+
+.gallery {
+  width: 375px;
+}
+@media (min-width: 1115px) {
+  .gallery {
+    width: 446px;
+  }
+}
+.gallery__image-container {
+  width: 100%;
+}
+.gallery__big-image {
+  width: 100%;
+  border-radius: 16px;
+  margin-bottom: 30px;
+}
+.gallery__thumnails {
+  display: none;
+}
+@media (min-width: 1115px) {
+  .gallery__thumnails {
+    width: 100%;
+    display: flex;
+    width: 446px;
+    justify-content: space-between;
+  }
+}
+.gallery__thumnail {
+  width: 90px;
+  height: 90px;
+  border-radius: 16px;
+}
+.gallery__thumnail:hover {
+  opacity: 0.5;
+  border: 2px solid hsl(26deg, 100%, 55%);
+}
+
+.details {
+  border: 1px solid red;
+  padding-top: 60px;
+}
+.details__company {
+  color: hsl(26deg, 100%, 55%);
+  text-transform: uppercase;
+  font-size: 0.8em;
+  letter-spacing: 1px;
+  margin-bottom: 24px;
+}
+.details__title {
+  font-size: 2.8em;
+  margin-bottom: 48px;
+}
+.details__description {
+  font-size: 1.05em;
+  color: hsl(219deg, 9%, 45%);
+  margin-bottom: 37px;
+}
+.details__now {
+  font-size: 2em;
+  font-weight: 700;
+  display: flex;
+  gap: 18px;
+  align-items: center;
+  margin-bottom: 12px;
+}
+.details__discount {
+  font-size: 0.5em;
+  background-color: hsl(25deg, 100%, 94%);
+  color: hsl(26deg, 100%, 55%);
+  padding: 4px;
+  border-radius: 4px;
+}
+.details__before {
+  font-weight: 700;
+  color: hsl(219deg, 9%, 45%);
+  text-decoration: line-through;
+}
+
+.main-container {
+  margin: auto;
+  border: 1px solid black;
+  width: 375px;
+}
+@media (min-width: 1115px) {
+  .main-container {
+    width: 1115px;
+  }
+}
+
+@media (min-width: 1115px) {
+  .content {
+    display: flex;
+    padding: 90px 50px;
+    gap: 124px;
+  }
+}
+
+/*# sourceMappingURL=styles.css.map */

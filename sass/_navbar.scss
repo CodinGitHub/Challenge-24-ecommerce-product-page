@@ -1,0 +1,16 @@
+.navbar{
+    // border: 1px solid blue;
+    display: none;
+    @media(min-width: 1115px){
+        display: block;
+        width: 400px;
+    }
+    &__items{
+        display: flex;
+        list-style: none;
+        justify-content: space-between; 
+    }
+    &__link{
+        text-decoration: none;
+    }
+}
