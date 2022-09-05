@@ -1,0 +1,35 @@
+@use 'variables';
+
+@mixin image-btn($top, $left){
+    width: 40px;
+    height: 40px;
+    background-color: variables.$White;
+    padding: 12px;
+    border-radius: 50%;
+    position: absolute;
+    top: $top;
+    left: $left;
+    &:hover{
+        cursor: pointer;
+    }
+    @media (min-width: 1115px){
+        display: none;
+    }
+}
+@mixin button{
+    width: 100%;
+    height: 57px;
+    border-radius: 8px;
+    background-color: variables.$Orange;
+    border: none;
+    color: variables.$White;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    font-size: 0.9em;
+    font-weight: 700;
+    &:hover{
+        cursor: pointer;
+    }
+}

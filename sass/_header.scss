@@ -24,6 +24,9 @@
         }
     }
     &__menu{
+        &:hover{
+            cursor: pointer;
+        }
         @media (min-width: 1115px){
             display: none;
         }
@@ -36,6 +39,25 @@
         justify-content: space-between;
         @media (min-width: 1115px){
             width: 125px;
+        }
+    }
+    &__cart{
+        position: relative;
+        &--notification{
+            display: none;
+            width: 15px;
+            height: 12px;
+            border-radius: 16px;
+            background-color: variables.$Orange;
+            position: absolute;
+            top: -2px;
+            right: -5px;
+            color: variables.$White;
+            text-align: center;
+            font-size: 0.6em;
+        }
+        &:hover{
+            cursor: pointer;
         }
     }
     &__avatar{

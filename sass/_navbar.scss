@@ -1,16 +1,47 @@
+@use 'variables';
+
 .navbar{
-    // border: 1px solid blue;
+    position: absolute;
+    z-index: 1;
     display: none;
-    @media(min-width: 1115px){
-        display: block;
-        width: 400px;
+    width: 250px;
+    opacity: unset;
+    height: 100%;
+    background-color: variables.$White;
+    padding: 28px 24px;
+    animation: showModal 250ms;
+    @keyframes showModal {
+        0%{left: -250px;}
+        100%{left: 0;}
+    }
+    &__close-icon{
+        margin-bottom: 50px;
+        &:hover{
+            cursor: pointer;
+        }
     }
     &__items{
         display: flex;
+        justify-content: space-between;
+        flex-direction: column;
         list-style: none;
-        justify-content: space-between; 
+        height: 200px;
     }
     &__link{
         text-decoration: none;
+        color: variables.$Very-vark-blue;
+        font-weight: 700;
+        font-size: 1.1em;
+        margin-bottom: 30px;
     }
+    @media(min-width: 1115px){
+        display: block;
+        width: 400px;
+        &__items{
+            display: flex;
+            list-style: none;
+            justify-content: space-between; 
+        }
+    }
+    
 }

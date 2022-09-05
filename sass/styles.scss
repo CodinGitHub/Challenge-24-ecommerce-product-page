@@ -4,11 +4,17 @@
 @use 'header';
 @use 'gallery';
 @use 'details';
+@use 'mixins';
+@use 'footer';
+@use 'modal-navbar';
+@use 'input';
+@use 'cart-modal';
 
 .main-container{
-    margin: auto;
+    margin: 12px auto;
     border: 1px solid black;
     width: 375px;
+    position: relative;
     @media (min-width: 1115px){
         width: 1115px;
     }
@@ -19,4 +25,8 @@
         padding: 90px 50px;
         gap: 124px;
     }
+}
+
+.show{
+    display: 'block';
 }
