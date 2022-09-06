@@ -1,17 +1,11 @@
 @use 'variables';
+@use 'mixins';
 
 .modal-navbar{
     &__background{
-        display: none;
-        position: absolute;
-        top: 0;
-        left: 0;
-        background-color: variables.$Black-modal;
-        width: 100%;
-        height: 100%;
-        z-index: 1;
+        @include mixins.modal-background;
     }
-    border: 1px solid red;
+    // border: 1px solid red;
     position: absolute;
     z-index: 1;
     display: none;

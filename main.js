@@ -11,7 +11,8 @@ let previusBtn = document.querySelector('.gallery__previus');
 let imageContainer = document.querySelector('.gallery__image-container');
 let imgIndex = 1;
 
-nextBtn.addEventListener('click', ()=>{
+nextBtn.addEventListener('click', event=>{
+    console.log(event)
     if (imgIndex == 4){
         imgIndex = 1;
     }else{
@@ -103,6 +104,7 @@ let cartModalCheckoutContainer = document.querySelector('.cart-modal__checkout-c
 
 cartModalDeleteBtn.addEventListener('click', event=>{
     cartModalCheckoutContainer.innerHTML = `<p class="cart-modal__empty">Your cart is empty.</p>`
+    headerCartNotification.innerText = 0;
 });
 
 //Cerrar el modal del cart cuando se hace click fuera de el
@@ -113,3 +115,14 @@ function waitClose(){
         }
     });
 }
+
+//Abrir el modal de la galeria
+let modalGallery = document.querySelector('.modal-gallery__background');
+
+imageContainer.addEventListener('click', event=>{
+    if(event.target.className == 'gallery__image-container'){
+        console.log(event.target.className)
+        modalGallery.style.display = 'block';
+    }
+    
+});

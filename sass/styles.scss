@@ -9,10 +9,11 @@
 @use 'modal-navbar';
 @use 'input';
 @use 'modal-cart';
+@use 'modal-gallery';
 
 .main-container{
     margin: 12px auto;
-    border: 1px solid black;
+    // border: 1px solid black;
     width: 375px;
     position: relative;
     @media (min-width: 1115px){

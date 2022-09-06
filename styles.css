@@ -22,8 +22,8 @@ body {
 .navbar__link {
   text-decoration: none;
   color: hsl(219deg, 9%, 45%);
-  display: flex;
-  align-items: center;
+  padding-top: 42px;
+  display: block;
   height: 112px;
 }
 .navbar__link:hover {
@@ -297,7 +297,6 @@ body {
 }
 
 .modal-navbar {
-  border: 1px solid red;
   position: absolute;
   z-index: 1;
   display: none;
@@ -471,9 +470,102 @@ body {
   margin-top: 40px;
 }
 
+.modal-gallery {
+  width: 375px;
+  margin: 100px auto;
+}
+.modal-gallery__background {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: hsla(0deg, 0%, 0%, 0.5);
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+.modal-gallery__image-container {
+  width: 100%;
+  height: 300px;
+  background-image: url("../images/image-product-1.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position-y: -35px;
+  position: relative;
+}
+.modal-gallery__image-container:hover {
+  cursor: pointer;
+}
+.modal-gallery__previus, .modal-gallery__next {
+  width: 40px;
+  height: 40px;
+  background-color: hsl(0deg, 0%, 100%);
+  padding: 12px;
+  border-radius: 50%;
+  position: absolute;
+  top: 190px;
+  left: -15px;
+}
+.modal-gallery__previus:hover, .modal-gallery__next:hover {
+  cursor: pointer;
+}
+@media (min-width: 1115px) {
+  .modal-gallery__previus, .modal-gallery__next {
+    display: block;
+  }
+}
+.modal-gallery__next {
+  width: 40px;
+  height: 40px;
+  background-color: hsl(0deg, 0%, 100%);
+  padding: 12px;
+  border-radius: 50%;
+  position: absolute;
+  top: 190px;
+  left: 420px;
+}
+.modal-gallery__next:hover {
+  cursor: pointer;
+}
+@media (min-width: 1115px) {
+  .modal-gallery__next {
+    display: block;
+  }
+}
+.modal-gallery__thumnails {
+  display: none;
+}
+@media (min-width: 1115px) {
+  .modal-gallery__thumnails {
+    width: 100%;
+    display: flex;
+    width: 446px;
+    justify-content: space-between;
+  }
+}
+.modal-gallery__thumnail {
+  width: 90px;
+  height: 90px;
+  border-radius: 16px;
+}
+.modal-gallery__thumnail:hover {
+  opacity: 0.5;
+  border: 2px solid hsl(26deg, 100%, 55%);
+}
+@media (min-width: 1115px) {
+  .modal-gallery {
+    width: 446px;
+  }
+  .modal-gallery__image-container {
+    background-position-y: 0;
+    height: 446px;
+    border-radius: 16px;
+    margin-bottom: 32px;
+  }
+}
+
 .main-container {
   margin: 12px auto;
-  border: 1px solid black;
   width: 375px;
   position: relative;
 }

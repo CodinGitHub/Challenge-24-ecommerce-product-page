@@ -1,0 +1,11 @@
+@use 'variables';
+@use 'mixins';
+
+.modal-gallery{
+    &__background{
+        @include mixins.modal-background;
+    }
+    @include mixins.modal-gallery(true, 190px, -15px, 190px, 420px);
+    margin: 100px auto;
+
+}

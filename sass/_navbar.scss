@@ -13,8 +13,10 @@
     &__link{
         text-decoration: none;
         color: variables.$Dark-grayish-blue;    
-        display: flex;
-        align-items: center;
+        // display: flex;
+        // align-items: center;
+        padding-top: 42px;
+        display: block;
         height: 112px;
         &:hover{
             border-bottom: 4px solid variables.$Orange;   

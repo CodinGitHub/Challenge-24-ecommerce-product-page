@@ -16,10 +16,10 @@
         }
     }
     &__previus{
-        @include mixins.image-btn(130px, 15px);
+        @include mixins.image-btn(130px, 15px, false);
     }
     &__next{
-        @include mixins.image-btn(130px, 320px);
+        @include mixins.image-btn(130px, 320px, false);
     }
     &__thumnails{
         display: none;
