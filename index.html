@@ -16,7 +16,7 @@
         <img class="header__menu" src="../images/icon-menu.svg" alt="">
         <img class="header__logo" src="../images/logo.svg" alt="">
 
-        <!-- <nav class="navbar">
+        <nav class="navbar">
           <ul class="navbar__items">
             <li><a class="navbar__link" href="#">Collections</a></li>
             <li><a class="navbar__link" href="#">Men</a></li>
@@ -24,18 +24,18 @@
             <li><a class="navbar__link" href="#">About</a></li>
             <li><a class="navbar__link" href="#">Contact</a></li>
           </ul>
-        </nav> -->
+        </nav>
 
         <!-- inicio navbar modal -->
         <div class="modal-navbar__background">          
-            <nav class="navbar">
-              <img class="navbar__close-icon" src="./images/icon-close.svg" alt="">
-              <ul class="navbar__items">
-                <li><a class="navbar__link" href="#">Collections</a></li>
-                <li><a class="navbar__link" href="#">Men</a></li>
-                <li><a class="navbar__link" href="#">Women</a></li>
-                <li><a class="navbar__link" href="#">About</a></li>
-                <li><a class="navbar__link" href="#">Contact</a></li>
+            <nav class="modal-navbar">
+              <img class="modal-navbar__close-icon" src="./images/icon-close.svg" alt="">
+              <ul class="modal-navbar__items">
+                <li><a class="modal-navbar__link" href="#">Collections</a></li>
+                <li><a class="modal-navbar__link" href="#">Men</a></li>
+                <li><a class="modal-navbar__link" href="#">Women</a></li>
+                <li><a class="modal-navbar__link" href="#">About</a></li>
+                <li><a class="modal-navbar__link" href="#">Contact</a></li>
               </ul>
             </nav>
         </div>
@@ -86,13 +86,14 @@
           <p class="details__now">$125.00 <span class="details__discount">50%</span></p>
           <p class="details__before">$250.00</p>
         </div>
-        <div class="input">
-          <img class="input__minus" src="./images/icon-minus.svg" alt="">
-          <input class="input__number" type="text" value="0">
-          <img class="input__plus" src="./images/icon-plus.svg" alt="">
+        <div class="details__product-quantity">
+          <div class="input">
+            <img class="input__minus" src="./images/icon-minus.svg" alt="">
+            <input class="input__number" type="text" value="0">
+            <img class="input__plus" src="./images/icon-plus.svg" alt="">
+          </div>
+          <button class="details__button"> <img src="./images/icon-cart-white.svg" alt=""> Add to cart</button>
         </div>
-        
-        <button class="details__button"> <img src="./images/icon-cart-white.svg" alt=""> Add to cart</button>
       </article>
     </section>
 

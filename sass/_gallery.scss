@@ -11,6 +11,9 @@
         background-size: cover;
         background-position-y: -35px;
         position: relative;
+        &:hover{
+            cursor: pointer;
+        }
     }
     &__previus{
         @include mixins.image-btn(130px, 15px);

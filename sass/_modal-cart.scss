@@ -9,8 +9,11 @@
     box-shadow: 3px 3px 10px;
     position: absolute;
     top: 75px;
-    left: 6px;
+    right: 6px;
     background-color: variables.$White;
+    @media (min-width: 1115px){
+        top: 100px;
+    }
     &__title{
         font-weight: 700;
         padding: 24px;
@@ -35,5 +38,14 @@
     }
     &__checkout-btn{
         @include mixins.button;
+    }
+    &__delete:hover{
+        cursor: pointer;
+    }
+    &__empty{
+        font-weight: 700;
+        color: variables.$Dark-grayish-blue;
+        text-align: center;
+        margin-top: 40px;
     }
 }

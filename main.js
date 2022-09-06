@@ -32,8 +32,8 @@ previusBtn.addEventListener('click', ()=>{
 //Mostrar - Ocular menu vertical
 
 let menuBtn = document.querySelector('.header__menu');
-let navbar = document.querySelector('.navbar');
-let navbarCloseBtn = document.querySelector('.navbar__close-icon');
+let modalNavbar = document.querySelector('.modal-navbar');
+let navbarCloseBtn = document.querySelector('.modal-navbar__close-icon');
 let modalNavbarBackground = document.querySelector('.modal-navbar__background');
 
 navbarCloseBtn.addEventListener('click', ()=>{
@@ -41,7 +41,7 @@ navbarCloseBtn.addEventListener('click', ()=>{
 });
 
 menuBtn.addEventListener('click', ()=>{
-    navbar.style.display = 'block';
+    modalNavbar.style.display = 'block';
     modalNavbarBackground.style.display = 'block';
 });
 
@@ -53,24 +53,26 @@ modalNavbarBackground.addEventListener('click', ()=>{
 let inputMinus = document.querySelector('.input__minus');
 let inputPlus = document.querySelector('.input__plus');
 let inputNumber = document.querySelector('.input__number');
-let counter = 0;
+let productCounter = 0;
 
 inputMinus.addEventListener('click', ()=>{
-    counter--;
-    inputNumber.value = counter;
+    productCounter--;
+    inputNumber.value = productCounter;
 });
 
 inputPlus.addEventListener('click', ()=>{
-    counter++;
-    inputNumber.value = counter;
+    productCounter++;
+    inputNumber.value = productCounter;
 });
 
 //Agregar Elementos al carrito
 let headerCartNotification = document.querySelector('.header__cart--notification');
 let addToCartBtn = document.querySelector('.details__button');
 
+let productCartNumber = 0;
 addToCartBtn.addEventListener('click', ()=>{
-    headerCartNotification.innerText = inputNumber.value;
+    productCartNumber = productCartNumber + parseInt(inputNumber.value)
+    headerCartNotification.innerText = productCartNumber;
     if(headerCartNotification.innerText == 0){
         headerCartNotification.style.display = 'none'
     }else{
@@ -81,8 +83,33 @@ addToCartBtn.addEventListener('click', ()=>{
 // Mostrar / Ocular modal cart
 let cartBtn = document.querySelector('.header__cart');
 let cartModal = document.querySelector('.cart-modal');
+let priceMultipication = document.querySelector('.cart-modal__price')
 
 cartBtn.addEventListener('click', ()=>{
     console.log(cartModal)
-    cartModal.classList.toggle('show')
+    // cartModal.classList.toggle('show')
+    if(cartModal.style.display == 'block'){
+        cartModal.style.display = 'none'
+    }else{
+        cartModal.style.display = 'block'
+        priceMultipication.innerHTML = `$125 x ${productCartNumber} <span>$${productCartNumber*125}</span>`
+    }
 });
+
+// Borrar elemento del cart 
+let cartModalDeleteBtn = document.querySelector('.cart-modal__delete');
+let cartModalCheckoutBtn = document.querySelector('.cart-modal__checkout-btn');
+let cartModalCheckoutContainer = document.querySelector('.cart-modal__checkout-container')
+
+cartModalDeleteBtn.addEventListener('click', event=>{
+    cartModalCheckoutContainer.innerHTML = `<p class="cart-modal__empty">Your cart is empty.</p>`
+});
+
+//Cerrar el modal del cart cuando se hace click fuera de el
+function waitClose(){
+    document.addEventListener('click', event=>{
+        if(event.target.className != 'cart-modal'){
+            cartModal.style.display = 'none'; 
+        }
+    });
+}

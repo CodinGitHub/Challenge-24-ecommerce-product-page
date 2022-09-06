@@ -1,4 +1,5 @@
 @use 'variables';
+@use 'mixins';
 
 .input{
 
@@ -10,8 +11,8 @@
     background-color: variables.$Light-grayish-blue;
     border-radius: 8px;
     margin-bottom: 16px;
-    &__plus:hover{  
-        cursor: pointer;
+    &__plus{
+        @include mixins.changeNumber(19px);
     }
     &__number{
         width: 100%;
@@ -23,8 +24,12 @@
         font-weight: 700;
         background-color: variables.$Light-grayish-blue;
     }    
-    &__minus:hover{
-        cursor: pointer;
+    &__minus{
+        @include mixins.changeNumber(25px);
     }
-    
+    @media (min-width: 1115px){
+        width: 200px;
+        // border: 1px solid;
+        padding: 0 10px;
+    }
 }

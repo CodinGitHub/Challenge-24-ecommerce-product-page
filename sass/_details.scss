@@ -26,6 +26,10 @@
         justify-content: space-between;
         align-items: center;
         margin-bottom: 24px;
+        @media (min-width: 1115px){
+            flex-direction: column;
+            align-items: flex-start;
+        }
     }
     &__now{
         font-size: 1.8em;
@@ -48,17 +52,23 @@
         color: variables.$Dark-grayish-blue;
         text-decoration: line-through;
     }
+    &__product-quantity{
+        @media (min-width: 1115px){
+            display: flex;
+            gap: 32px;
+        }
+    }
     &__button{
         @include mixins.button;    
     }
     @media (min-width: 1115px){
         padding-top: 60px;
         &__title{
-            font-size: 2.8em;
+            font-size: 2.7em;
             margin-bottom: 48px;
         }
         &__description{
-            font-size: 1.05em;
+            font-size: 0.9em;
             margin-bottom: 37px;
         }
     }

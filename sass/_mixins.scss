@@ -31,5 +31,19 @@
     font-weight: 700;
     &:hover{
         cursor: pointer;
+        // filter: brightness(1.2);
+        opacity: 0.50;
+    }
+}
+
+@mixin changeNumber($padding) {
+    width: 25px;
+    // border: 1px solid;
+    height: 100%;
+    display: grid;
+    place-content: center;
+    padding: $padding 0;
+    &:hover{  
+        cursor: pointer;
     }
 }

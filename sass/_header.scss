@@ -9,12 +9,13 @@
     padding: 0 24px;
     height: 68px;
     @media (min-width: 1115px){
-        padding: 0;
+        padding: 0 24px 0 0;
         height: 112px;
         border-bottom: 1px solid variables.$Grayish-blue;
     }
     &__navigation{
         width: 175px;
+        height: 100%;
         // border: 1px solid black;
         display: flex;
         align-items: center;
@@ -31,6 +32,7 @@
             display: none;
         }
     }
+    
     &__cart-avatar{
         // border: 1px solid black;
         width: 70px;
@@ -64,6 +66,12 @@
         width: 24px;
         @media (min-width: 1115px){
             width: 48px;
+        }
+        &:hover{
+            // border: 2px solid variables.$Orange;
+            cursor: pointer;
+            border: 2px solid variables.$Orange;
+            border-radius: 50%;
         }
     }
 
