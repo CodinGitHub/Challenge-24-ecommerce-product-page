@@ -5,7 +5,22 @@
     &__background{
         @include mixins.modal-background;
     }
-    @include mixins.modal-gallery(true, 190px, -15px, 190px, 420px);
+    &__close-container{
+        
+        text-align: right;
+        height: 30px;
+    }
+    &__close{
+        width: 16px;
+        &:hover{
+            cursor: pointer;
+            content: url('../images/icon-close-orange.svg');
+        }
+    }
+    @include mixins.modal-gallery(true, 190px, -15px, 190px, 530px);
     margin: 100px auto;
+    @media (min-width: 1115px){
 
+        width: 550px;
+    }
 }

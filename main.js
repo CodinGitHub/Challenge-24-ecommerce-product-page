@@ -64,11 +64,16 @@ addToCartBtn.addEventListener('click', ()=>{
     productCartNumber = productCartNumber + parseInt(inputNumber.value)
     headerCartNotification.innerText = productCartNumber;
 
+    
+
     if(headerCartNotification.innerText == 0){
         headerCartNotification.style.display = 'none'
     }else{
         headerCartNotification.style.display = 'block'
         let cartModalCheckoutContainer = document.querySelector('.cart-modal__checkout-container')
+
+
+
         cartModalCheckoutContainer.innerHTML = `
         <div class="cart-modal__details-container">
             <img class="cart-modal__image" src="./images/image-product-1.jpg" alt="">
@@ -86,11 +91,14 @@ addToCartBtn.addEventListener('click', ()=>{
 
 });
 
+let cartModalCheckoutContainer = document.querySelector('.cart-modal__checkout-container')
+let cartModalDeleteBtn = document.querySelector('.cart-modal__delete');
+
 // Borrar elemento del cart 
 function deleteCartItems(){
-    let cartModalDeleteBtn = document.querySelector('.cart-modal__delete');
+    cartModalDeleteBtn = document.querySelector('.cart-modal__delete');
     // let cartModalCheckoutBtn = document.querySelector('.cart-modal__checkout-btn');
-    let cartModalCheckoutContainer = document.querySelector('.cart-modal__checkout-container')
+    // let cartModalCheckoutContainer = document.querySelector('.cart-modal__checkout-container')
     cartModalDeleteBtn.addEventListener('click', event=>{
         console.log('borrado')
         cartModalCheckoutContainer.innerHTML = `<p class="cart-modal__empty">Your cart is empty.</p>`
@@ -102,6 +110,7 @@ function deleteCartItems(){
 
 // Mostrar / Ocular modal cart
 let cartBtn = document.querySelector('.header__cart');
+headerCartNotification.innerText = 0;
 let cartModal = document.querySelector('.cart-modal');
 
 
@@ -111,8 +120,15 @@ cartBtn.addEventListener('click', ()=>{
     if(cartModal.style.display == 'block'){
         cartModal.style.display = 'none'
     }else{
+        console.log(headerCartNotification.innerText)
+        if(headerCartNotification.innerText == 0){
+            cartModalCheckoutContainer.innerHTML = `<p class="cart-modal__empty">Your cart is empty.</p>`
+        }
         cartModal.style.display = 'block'
-        deleteCartItems()
+        console.log(headerCartNotification.innerText)
+        if(headerCartNotification.innerText !== '0'){
+            deleteCartItems()
+        }
     }
 });
 
@@ -126,6 +142,7 @@ function waitClose(){
     });
 }
 
+let imgIndex = 0;
 //Abrir el modal de la galeria
 let modalGallery = document.querySelector('.modal-gallery__background');
 let modalGalleryPrevius = document.querySelector('.modal-gallery__previus');
@@ -133,13 +150,14 @@ let modalGalleryNext = document.querySelector('.modal-gallery__next');
 let modalGalleryImageContainer = document.querySelector('.modal-gallery__image-container');
 let modalGalleryThumnails = document.querySelectorAll('.modal-gallery__thumnail');
 modalGalleryThumnails = [...modalGalleryThumnails];
+let modalGalleryClose = document.querySelector('.modal-gallery__close');
+let modalGalleryBackground = document.querySelector('.modal-gallery__background');
 
 imageContainer.addEventListener('click', event=>{
     if(event.target.className == 'gallery__image-container'){
-        console.log(event.target.className)
         modalGallery.style.display = 'block';
     }
-    modalGalleryThumnails[0].style.border = '1px solid red';
+    modalGalleryThumnails[0].style.border = '2px solid hsl(26, 100%, 55%)';
 });
 
 modalGalleryPrevius.addEventListener('click', ()=>{
@@ -149,8 +167,42 @@ modalGalleryNext.addEventListener('click', ()=>{
     changeNextImage(modalGalleryImageContainer);
 });
 
+modalGalleryThumnails.forEach(thumnail=>{
+    thumnail.addEventListener('click', event=>{
+        let id = event.target.id.slice(-1);
+        console.log(id);
+        chanceImageById(id, modalGalleryImageContainer, modalGalleryThumnails)
+    });
+});
+
+modalGalleryClose.addEventListener('click', ()=>{
+    modalGallery.style.display = 'none';
+});
+
+modalGalleryBackground.addEventListener('click', event=>{
+    if(event.target.className === 'modal-gallery__background'){
+        modalGallery.style.display = 'none';
+    }
+});
+
+//Cambiar thumnails de la vista desktop
+let galleryThumnail = document.querySelectorAll('.gallery__thumnail');
+let galleryThumnailsContainer = document.querySelectorAll('.gallery__thumnails');
+let galleryImageContainer = document.querySelector('.gallery__image-container');
+
+galleryThumnail = [...galleryThumnail];
+galleryThumnail[0].style.border = '2px solid hsl(26, 100%, 55%)';
+
+galleryThumnail.forEach(thumnail=>{
+    thumnail.addEventListener('click', event=>{
+        let id = event.target.id.slice(-1);
+        console.log(id)
+        chanceImageById(id, galleryImageContainer, galleryThumnail)
+    });
+});
+
 //Funciones:
-let imgIndex = 0;
+
 
 function changeNextImage(imageContainer){
     if (imgIndex == 3){
@@ -160,7 +212,7 @@ function changeNextImage(imageContainer){
     }
     imageContainer.style.backgroundImage = `url('../images/image-product-${imgIndex+1}.jpg')`;
     eraseThumnailStile(modalGalleryThumnails)
-    modalGalleryThumnails[imgIndex].style.border = '1px solid red'
+    modalGalleryThumnails[imgIndex].style.border = '2px solid hsl(26, 100%, 55%)'
 }
 
 function changePreviusImage(imageContainer){
@@ -171,10 +223,16 @@ function changePreviusImage(imageContainer){
     }
     imageContainer.style.backgroundImage = `url('../images/image-product-${imgIndex+1}.jpg')`;
     eraseThumnailStile(modalGalleryThumnails)
-    modalGalleryThumnails[imgIndex].style.border = '1px solid red'
+    modalGalleryThumnails[imgIndex].style.border = '2px solid hsl(26, 100%, 55%)'
 }
 function eraseThumnailStile(thumnails){
     thumnails.forEach(thumnail=>{
         thumnail.style.border = 'none'
     });
+}
+function chanceImageById(id, imageContainer, thumnailsContainer){  
+    imgIndex = id-1; 
+    imageContainer.style.backgroundImage = `url('../images/image-product-${imgIndex+1}.jpg')`;
+    eraseThumnailStile(thumnailsContainer)
+    thumnailsContainer[imgIndex].style.border = '2px solid hsl(26, 100%, 55%)'
 }

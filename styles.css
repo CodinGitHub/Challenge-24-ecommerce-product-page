@@ -183,8 +183,8 @@ body {
   border-radius: 16px;
 }
 .gallery__thumnail:hover {
-  opacity: 0.5;
   border: 2px solid hsl(26deg, 100%, 55%);
+  cursor: pointer;
 }
 @media (min-width: 1115px) {
   .gallery {
@@ -484,6 +484,17 @@ body {
   height: 100%;
   z-index: 1;
 }
+.modal-gallery__close-container {
+  text-align: right;
+  height: 30px;
+}
+.modal-gallery__close {
+  width: 16px;
+}
+.modal-gallery__close:hover {
+  cursor: pointer;
+  content: url("../images/icon-close-orange.svg");
+}
 .modal-gallery__image-container {
   width: 100%;
   height: 300px;
@@ -522,7 +533,7 @@ body {
   border-radius: 50%;
   position: absolute;
   top: 190px;
-  left: 420px;
+  left: 530px;
 }
 .modal-gallery__next:hover {
   cursor: pointer;
@@ -534,6 +545,7 @@ body {
 }
 .modal-gallery__thumnails {
   display: none;
+  margin: auto;
 }
 @media (min-width: 1115px) {
   .modal-gallery__thumnails {
@@ -549,8 +561,8 @@ body {
   border-radius: 16px;
 }
 .modal-gallery__thumnail:hover {
-  opacity: 0.5;
   border: 2px solid hsl(26deg, 100%, 55%);
+  cursor: pointer;
 }
 @media (min-width: 1115px) {
   .modal-gallery {
@@ -561,6 +573,11 @@ body {
     height: 446px;
     border-radius: 16px;
     margin-bottom: 32px;
+  }
+}
+@media (min-width: 1115px) {
+  .modal-gallery {
+    width: 550px;
   }
 }
 
