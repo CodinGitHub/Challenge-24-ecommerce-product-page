@@ -1,10 +1,11 @@
-@use 'variables';
+@use 'variables' as v;
 @use 'mixins';
 
 .details{
+    // border: 1px solid red;
     padding: 24px;
     &__company{
-        color: variables.$Orange;
+        color: v.$Orange;
         text-transform: uppercase;
         font-size: 0.8em;
         letter-spacing: 1px;
@@ -16,52 +17,41 @@
     }
     &__description{
         font-size: 0.94em;
-        color: variables.$Dark-grayish-blue;
+        color: v.$Dark-grayish-blue;
         line-height: 24px;
         margin-bottom: 24px;
     }
     &__prices{
-        // border: 1px solid red;
         display: flex;
         justify-content: space-between;
-        align-items: center;
         margin-bottom: 24px;
-        @media (min-width: 1115px){
-            flex-direction: column;
-            align-items: flex-start;
-        }
+        align-items: center;
     }
     &__now{
         font-size: 1.8em;
         font-weight: 700;
         display: flex;
-        gap: 18px;
-        // border: 1px solid black;
         align-items: center;
-        
+        gap: 18px;
     }
     &__discount{
         font-size: 0.5em;
-        background-color: variables.$Pale-orange;
-        color: variables.$Orange;
+        background-color: v.$Pale-orange;
+        color: v.$Orange;
         padding: 4px;
-        border-radius: 4px;
+        border: 4px;
     }
     &__before{
         font-weight: 700;
-        color: variables.$Dark-grayish-blue;
+        color: v.$Dark-grayish-blue;
         text-decoration: line-through;
     }
-    &__product-quantity{
-        @media (min-width: 1115px){
-            display: flex;
-            gap: 32px;
-        }
-    }
     &__button{
-        @include mixins.button;    
+        @include mixins.button;
     }
+    
     @media (min-width: 1115px){
+        width: 446px;
         padding-top: 60px;
         &__title{
             font-size: 2.7em;
@@ -70,6 +60,14 @@
         &__description{
             font-size: 0.9em;
             margin-bottom: 37px;
+        }
+        &__prices{
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        &__product-quantity{
+            display: flex;
+            gap: 32px;
         }
     }
 }

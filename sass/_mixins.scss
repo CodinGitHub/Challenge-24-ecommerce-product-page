@@ -1,9 +1,21 @@
-@use 'variables';
+@use 'variables' as v;
+
+@mixin modal-background{
+    background-color: v.$Black-modal;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    // display: none;
+    overflow: hidden;
+}
 
 @mixin image-btn($top, $left, $showDesktop){
+    background-color: v.$White;
     width: 40px;
     height: 40px;
-    background-color: variables.$White;
     padding: 12px;
     border-radius: 50%;
     position: absolute;
@@ -21,98 +33,31 @@
         
     }
 }
+
+@mixin changeNumber($pv, $ph){
+    width: 25px;
+    height: 100%;
+    padding: $pv $ph;
+    &:hover{
+        cursor: pointer;
+    }
+}
+
 @mixin button{
+    background-color: v.$Orange;
     width: 100%;
     height: 57px;
     border-radius: 8px;
-    background-color: variables.$Orange;
     border: none;
-    color: variables.$White;
+    color: v.$White;
+    font-size: 0.9em;
+    font-weight: 700;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 16px;
-    font-size: 0.9em;
-    font-weight: 700;
     &:hover{
         cursor: pointer;
-        // filter: brightness(1.2);
-        opacity: 0.50;
+        opacity: 0.5;
     }
-}
-
-@mixin changeNumber($padding) {
-    width: 25px;
-    // border: 1px solid;
-    height: 100%;
-    display: grid;
-    place-content: center;
-    padding: $padding 0;
-    &:hover{  
-        cursor: pointer;
-    }
-}
-
-@mixin modal-gallery($showDesktop, $prevX, $prevY, $nextX, $nextY){
-    width: 375px;
-    // border: 1px solid red;
-    &__image-container{
-        width: 100%;
-        height: 300px;
-        background-image: url('../images/image-product-1.jpg');
-        background-repeat: no-repeat;
-        background-size: cover;
-        background-position-y: -35px;
-        position: relative;
-        &:hover{
-            cursor: pointer;
-        }
-    }
-    &__previus, &__next{
-        @include image-btn($prevX, $prevY, $showDesktop);
-    }
-    &__next{
-        @include image-btn($nextX, $nextY, $showDesktop);
-    }
-    &__thumnails{
-        display: none;
-        margin: auto;
-        @media (min-width: 1115px){
-            width: 100%;
-            // border: 3px solid black;
-            display: flex;
-            width: 446px;
-            justify-content: space-between;
-        }
-    }
-    &__thumnail{
-        width: 90px;
-        height: 90px;
-        border-radius: 16px;
-        &:hover{
-            // opacity: 0.50;
-            border: 2px solid variables.$Orange;
-            cursor: pointer;
-        }
-    }
-    @media (min-width: 1115px){
-        width: 446px;
-        &__image-container{
-            background-position-y: 0;
-            height: 446px; 
-            border-radius: 16px;
-            margin-bottom: 32px;
-        }
-    }
-}
-
-@mixin modal-background{
-    display: none;
-    position: absolute;
-    top: 0;
-    left: 0;
-    background-color: variables.$Black-modal;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
 }

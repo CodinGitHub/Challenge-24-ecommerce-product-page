@@ -2,21 +2,18 @@
 
 .header{
     // border: 1px solid red;
-    
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    padding: 0 24px;
+    justify-content: space-between;
     height: 68px;
+    padding: 0 24px;
     @media (min-width: 1115px){
-        padding: 0 24px 0 0;
         height: 112px;
         border-bottom: 1px solid variables.$Grayish-blue;
     }
     &__navigation{
         width: 175px;
         height: 100%;
-        // border: 1px solid black;
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -32,13 +29,12 @@
             display: none;
         }
     }
-    
     &__cart-avatar{
-        // border: 1px solid black;
-        width: 70px;
-        display: flex;
-        align-items: center;
+        // border: 1px solid blue; 
+        display: flex; 
+        align-items: center; 
         justify-content: space-between;
+        width: 70px;
         @media (min-width: 1115px){
             width: 125px;
         }
@@ -47,16 +43,16 @@
         position: relative;
         &--notification{
             display: none;
+            background-color: variables.$Orange;
             width: 15px;
             height: 12px;
             border-radius: 16px;
-            background-color: variables.$Orange;
             position: absolute;
             top: -2px;
             right: -5px;
-            color: variables.$White;
-            text-align: center;
             font-size: 0.6em;
+            text-align: center;
+            color: variables.$White;
         }
         &:hover{
             cursor: pointer;
@@ -68,11 +64,10 @@
             width: 48px;
         }
         &:hover{
-            // border: 2px solid variables.$Orange;
             cursor: pointer;
             border: 2px solid variables.$Orange;
-            border-radius: 50%;
+            border-radius: 50%; 
         }
     }
-
+    
 }

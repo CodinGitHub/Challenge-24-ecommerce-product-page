@@ -1,4 +1,4 @@
-@use 'variables';
+@use 'variables' as v;
 @use 'mixins';
 
 .cart-modal{
@@ -10,16 +10,13 @@
     position: absolute;
     top: 75px;
     right: 6px;
-    background-color: variables.$White;
-    @media (min-width: 1115px){
-        top: 100px;
-    }
+    background-color: v.$White;
     &__title{
         font-weight: 700;
         padding: 24px;
-        border-bottom: 1px solid variables.$Grayish-blue;
+        border-bottom: 1px solid v.$Grayish-blue;
     }
-    &__checkout-container{
+    &__chekout-container{
         padding: 24px;
     }
     &__details-container{
@@ -27,25 +24,21 @@
         align-items: center;
         justify-content: space-between;
         margin-bottom: 24px;
+        color: v.$Dark-grayish-blue;
     }
     &__image{
         width: 50px;
-        height: 50px;
+        // height: 50px;
         border-radius: 4px;
     }
     &__price span{
+        color: v.$Black;
         font-weight: 700;
-    }
-    &__checkout-btn{
-        @include mixins.button;
     }
     &__delete:hover{
         cursor: pointer;
     }
-    &__empty{
-        font-weight: 700;
-        color: variables.$Dark-grayish-blue;
-        text-align: center;
-        margin-top: 40px;
+    &__chekount{
+        @include mixins.button;
     }
 }

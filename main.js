@@ -1,238 +1,184 @@
-// Cambio de imagenes desde botones
-let imgArray = [
-    '../images/image-product-1.jpg',
-    '../images/image-product-2.jpg',
-    '../images/image-product-3.jpg',
-    '../images/image-product-4.jpg',
-]
+// Cambio de cantidad de articulos ingresado por el usuario.
 
-let nextBtn = document.querySelector('.gallery__next');
-let previusBtn = document.querySelector('.gallery__previus');
-let imageContainer = document.querySelector('.gallery__image-container');
+const minusBtn = document.querySelector('.input__minus');
+const plusBtn = document.querySelector('.input__plus');
+let userInput = document.querySelector('.input__number');
 
+let userInputNumber = 0;
 
-nextBtn.addEventListener('click', ()=>{
+plusBtn.addEventListener('click', ()=>{
+    userInputNumber++;
+    userInput.value = userInputNumber;
+    console.log(userInputNumber);
+});
+
+minusBtn.addEventListener('click', ()=>{
+    userInputNumber--;
+    if(userInputNumber <= 0){
+        userInputNumber = 0;
+    }
+    userInput.value = userInputNumber;
+    console.log(userInputNumber);
+});
+
+// Agregar el total de productos al carrito cuando se presiona el boton ADD TO CART
+const addToCartBtn = document.querySelector('.details__button');
+let cartNotification = document.querySelector('.header__cart--notification');
+let lastValue = parseInt(cartNotification.innerText);
+
+addToCartBtn.addEventListener('click', ()=>{ 
+    lastValue = lastValue + userInputNumber;
+    
+    cartNotification.innerText = lastValue;
+    cartNotification.style.display = 'block';
+    drawProductInModal();
+    
+});
+
+//Mostrar el modal con el detalle del carrito
+const cartIconBtn = document.querySelector('.header__cart');
+const cartModal = document.querySelector('.cart-modal');
+// let priceModal = document.querySelector('.cart-modal__price');
+const productContainer = document.querySelector('.cart-modal__chekout-container');
+
+cartIconBtn.addEventListener('click', ()=>{
+    cartModal.classList.toggle('show');
+
+    if(lastValue === 0){
+        productContainer.innerHTML = '<p class="cart-empty">Your cart is empty</p>';
+    }else{
+        drawProductInModal();
+    }
+    
+});
+
+//Borrar el contenido del carrito
+function deleteProduct(){
+    const deleteProductBtn = document.querySelector('.cart-modal__delete');
+    deleteProductBtn.addEventListener('click', ()=>{
+        productContainer.innerHTML = '<p class="cart-empty">Your cart is empty</p>';
+        lastValue = 0;
+        cartNotification.innerText = lastValue;
+    });
+}
+
+// Cambiar imagenes cuando se presione los botones flecha.
+const imageContainer = document.querySelector('.gallery__image-container');
+const previusGalleryBtn = document.querySelector('.gallery__previus');
+const nextGalleryBtn = document.querySelector('.gallery__next');
+let imgIndex = 1;
+
+nextGalleryBtn.addEventListener('click', ()=>{
     changeNextImage(imageContainer);
 });
 
-previusBtn.addEventListener('click', ()=>{
+previusGalleryBtn.addEventListener('click', ()=>{
     changePreviusImage(imageContainer);
 });
 
-//Mostrar - Ocular menu vertical
 
-let menuBtn = document.querySelector('.header__menu');
-let modalNavbar = document.querySelector('.modal-navbar');
-let navbarCloseBtn = document.querySelector('.modal-navbar__close-icon');
-let modalNavbarBackground = document.querySelector('.modal-navbar__background');
+//Mostrar el modal de imagenes cuando hago click en la imagen principal.
+const imagesModal = document.querySelector('.modal-gallery__background');
+const closeModalBtn = document.querySelector('.modal-gallery__close');
 
-navbarCloseBtn.addEventListener('click', ()=>{
-    modalNavbarBackground.style.display = 'none';
-});
-
-menuBtn.addEventListener('click', ()=>{
-    modalNavbar.style.display = 'block';
-    modalNavbarBackground.style.display = 'block';
-});
-
-modalNavbarBackground.addEventListener('click', ()=>{
-    modalNavbarBackground.style.display = 'none';
-});
-
-// Agregar numeros al input
-let inputMinus = document.querySelector('.input__minus');
-let inputPlus = document.querySelector('.input__plus');
-let inputNumber = document.querySelector('.input__number');
-let productCounter = 0;
-
-inputMinus.addEventListener('click', ()=>{
-    productCounter--;
-    inputNumber.value = productCounter;
-});
-
-inputPlus.addEventListener('click', ()=>{
-    productCounter++;
-    inputNumber.value = productCounter;
-});
-
-//Agregar Elementos al carrito
-let headerCartNotification = document.querySelector('.header__cart--notification');
-let addToCartBtn = document.querySelector('.details__button');
-
-let productCartNumber = 0;
-addToCartBtn.addEventListener('click', ()=>{
-    productCartNumber = productCartNumber + parseInt(inputNumber.value)
-    headerCartNotification.innerText = productCartNumber;
-
+imageContainer.addEventListener('click', ()=>{
+    if(window.innerWidth >= 1115){
+        imagesModal.style.display = 'grid';
+    }
     
+});
 
-    if(headerCartNotification.innerText == 0){
-        headerCartNotification.style.display = 'none'
-    }else{
-        headerCartNotification.style.display = 'block'
-        let cartModalCheckoutContainer = document.querySelector('.cart-modal__checkout-container')
+closeModalBtn.addEventListener('click', ()=>{
+    imagesModal.style.display = 'none';
+});
+
+//Cambiar las imagenes principales desde los thumbnails
+let thumbnails = document.querySelectorAll('.gallery__thumnail')
+thumbnails = [...thumbnails]
+
+thumbnails.forEach(thumbnail => {
+    thumbnail.addEventListener('click', event=>{
+        console.log(event.target.id)
+        imageContainer.style.backgroundImage = `url('../images/image-product-${event.target.id}.jpg')`
+    });
+});
+
+//Cambiar las imagenes principales desde los thumbnails en el MODAL
+let modalthumbnails = document.querySelectorAll('.modal-gallery__thumnail');
+const modalImageContainer = document.querySelector('.modal-gallery__image-container')
+modalthumbnails = [...modalthumbnails]
+
+modalthumbnails.forEach(modalthumbnail => {
+    modalthumbnail.addEventListener('click', event=>{
+        console.log(event.target.id.slice(-1))
+        modalImageContainer.style.backgroundImage = `url('../images/image-product-${event.target.id.slice(-1)}.jpg')`
+    });
+});
+
+// Cambiar imagen principal de modal desde flechas en el modal
+const previusModalBtn = document.querySelector('.modal-gallery__previus');
+const nextModalBtn = document.querySelector('.modal-gallery__next');
+
+nextModalBtn.addEventListener('click', ()=>{
+    changeNextImage(modalImageContainer);
+});
+
+previusModalBtn.addEventListener('click', ()=>{
+    changePreviusImage(modalImageContainer);
+});
+
+// Mostrar el navbar cuando presiono el menu de hamburgesa
+const hamburgerMenu = document.querySelector('.header__menu');
+const modalNavbar = document.querySelector('.modal-navbar__background');
+const closeModalNavbar = document.querySelector('.modal-navbar__close-icon');
+
+modalNavbar.style.display = 'none'
+
+hamburgerMenu.addEventListener('click', ()=>{
+    console.log('abrir modal');
+    modalNavbar.style.display = 'block';
+});
+
+closeModalNavbar.addEventListener('click', ()=>{
+    modalNavbar.style.display = 'none';
+});
 
 
 
-        cartModalCheckoutContainer.innerHTML = `
+
+
+// FUNCIONES
+
+function drawProductInModal(){
+    productContainer.innerHTML = `
         <div class="cart-modal__details-container">
-            <img class="cart-modal__image" src="./images/image-product-1.jpg" alt="">
+            <img class="cart-modal__image" src="./images/image-product-1-thumbnail.jpg" alt="">
             <div>
-            <p class="cart-modal__product">Autum Limited Edition...</p>
-            <p class="cart-modal__price">$125 x 3 <span>$375.00</span></p>
+            <p class="cart-modal__product">Autumn Limited Edition...</p>
+            <p class="cart-modal__price">$125 x3 <span>$375.00</span> </p>
             </div>
-            <img class="cart-modal__delete" src="./images/icon-delete.svg" alt="">
+            <img class="cart-modal__delete" src="./images/icon-delete.svg" alt="delete">
         </div>
-        <button class="cart-modal__checkout-btn">Checkout</button>`
-        let priceMultipication = document.querySelector('.cart-modal__price');
-        priceMultipication.innerHTML = `$125 x ${productCartNumber} <span>$${productCartNumber*125}</span>`
-        deleteCartItems()
-    }
-
-});
-
-let cartModalCheckoutContainer = document.querySelector('.cart-modal__checkout-container')
-let cartModalDeleteBtn = document.querySelector('.cart-modal__delete');
-
-// Borrar elemento del cart 
-function deleteCartItems(){
-    cartModalDeleteBtn = document.querySelector('.cart-modal__delete');
-    // let cartModalCheckoutBtn = document.querySelector('.cart-modal__checkout-btn');
-    // let cartModalCheckoutContainer = document.querySelector('.cart-modal__checkout-container')
-    cartModalDeleteBtn.addEventListener('click', event=>{
-        console.log('borrado')
-        cartModalCheckoutContainer.innerHTML = `<p class="cart-modal__empty">Your cart is empty.</p>`
-        // headerCartNotification.innerText = 0;
-        headerCartNotification.style.display = 'none'
-        productCartNumber = 0;
-    });
+        <button class="cart-modal__chekount" >Checkout</button>`
+    deleteProduct()
+    let priceModal = document.querySelector('.cart-modal__price');
+    priceModal.innerHTML = `$125 x${lastValue} <span>$${lastValue*125}.00</span>`;
 }
 
-// Mostrar / Ocular modal cart
-let cartBtn = document.querySelector('.header__cart');
-headerCartNotification.innerText = 0;
-let cartModal = document.querySelector('.cart-modal');
-
-
-cartBtn.addEventListener('click', ()=>{
-    console.log(cartModal)
-    // cartModal.classList.toggle('show')
-    if(cartModal.style.display == 'block'){
-        cartModal.style.display = 'none'
-    }else{
-        console.log(headerCartNotification.innerText)
-        if(headerCartNotification.innerText == 0){
-            cartModalCheckoutContainer.innerHTML = `<p class="cart-modal__empty">Your cart is empty.</p>`
-        }
-        cartModal.style.display = 'block'
-        console.log(headerCartNotification.innerText)
-        if(headerCartNotification.innerText !== '0'){
-            deleteCartItems()
-        }
-    }
-});
-
-
-//Cerrar el modal del cart cuando se hace click fuera de el
-function waitClose(){
-    document.addEventListener('click', event=>{
-        if(event.target.className != 'cart-modal'){
-            cartModal.style.display = 'none'; 
-        }
-    });
-}
-
-let imgIndex = 0;
-//Abrir el modal de la galeria
-let modalGallery = document.querySelector('.modal-gallery__background');
-let modalGalleryPrevius = document.querySelector('.modal-gallery__previus');
-let modalGalleryNext = document.querySelector('.modal-gallery__next');
-let modalGalleryImageContainer = document.querySelector('.modal-gallery__image-container');
-let modalGalleryThumnails = document.querySelectorAll('.modal-gallery__thumnail');
-modalGalleryThumnails = [...modalGalleryThumnails];
-let modalGalleryClose = document.querySelector('.modal-gallery__close');
-let modalGalleryBackground = document.querySelector('.modal-gallery__background');
-
-imageContainer.addEventListener('click', event=>{
-    if(event.target.className == 'gallery__image-container'){
-        modalGallery.style.display = 'block';
-    }
-    modalGalleryThumnails[0].style.border = '2px solid hsl(26, 100%, 55%)';
-});
-
-modalGalleryPrevius.addEventListener('click', ()=>{
-    changePreviusImage(modalGalleryImageContainer);
-});
-modalGalleryNext.addEventListener('click', ()=>{
-    changeNextImage(modalGalleryImageContainer);
-});
-
-modalGalleryThumnails.forEach(thumnail=>{
-    thumnail.addEventListener('click', event=>{
-        let id = event.target.id.slice(-1);
-        console.log(id);
-        chanceImageById(id, modalGalleryImageContainer, modalGalleryThumnails)
-    });
-});
-
-modalGalleryClose.addEventListener('click', ()=>{
-    modalGallery.style.display = 'none';
-});
-
-modalGalleryBackground.addEventListener('click', event=>{
-    if(event.target.className === 'modal-gallery__background'){
-        modalGallery.style.display = 'none';
-    }
-});
-
-//Cambiar thumnails de la vista desktop
-let galleryThumnail = document.querySelectorAll('.gallery__thumnail');
-let galleryThumnailsContainer = document.querySelectorAll('.gallery__thumnails');
-let galleryImageContainer = document.querySelector('.gallery__image-container');
-
-galleryThumnail = [...galleryThumnail];
-galleryThumnail[0].style.border = '2px solid hsl(26, 100%, 55%)';
-
-galleryThumnail.forEach(thumnail=>{
-    thumnail.addEventListener('click', event=>{
-        let id = event.target.id.slice(-1);
-        console.log(id)
-        chanceImageById(id, galleryImageContainer, galleryThumnail)
-    });
-});
-
-//Funciones:
-
-
-function changeNextImage(imageContainer){
-    if (imgIndex == 3){
-        imgIndex = 0;
+function changeNextImage(imgContainer){
+    if(imgIndex === 4){
+        imgIndex = 1;
     }else{
         imgIndex++;
     }
-    imageContainer.style.backgroundImage = `url('../images/image-product-${imgIndex+1}.jpg')`;
-    eraseThumnailStile(modalGalleryThumnails)
-    modalGalleryThumnails[imgIndex].style.border = '2px solid hsl(26, 100%, 55%)'
+    imgContainer.style.backgroundImage = `url('../images/image-product-${imgIndex}.jpg')`
 }
 
-function changePreviusImage(imageContainer){
-    if (imgIndex == 0){
-        imgIndex = 3;
+function changePreviusImage(imgContainer){
+    if(imgIndex === 1){
+        imgIndex = 4;
     }else{
         imgIndex--;
     }
-    imageContainer.style.backgroundImage = `url('../images/image-product-${imgIndex+1}.jpg')`;
-    eraseThumnailStile(modalGalleryThumnails)
-    modalGalleryThumnails[imgIndex].style.border = '2px solid hsl(26, 100%, 55%)'
-}
-function eraseThumnailStile(thumnails){
-    thumnails.forEach(thumnail=>{
-        thumnail.style.border = 'none'
-    });
-}
-function chanceImageById(id, imageContainer, thumnailsContainer){  
-    imgIndex = id-1; 
-    imageContainer.style.backgroundImage = `url('../images/image-product-${imgIndex+1}.jpg')`;
-    eraseThumnailStile(thumnailsContainer)
-    thumnailsContainer[imgIndex].style.border = '2px solid hsl(26, 100%, 55%)'
+    imgContainer.style.backgroundImage = `url('../images/image-product-${imgIndex}.jpg')`
 }
